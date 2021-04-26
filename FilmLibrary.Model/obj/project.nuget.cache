@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "84ElCMlJ4KUPKKnOk2GA4ZLpBr7v+/qiMSJW/p96ByNK70B/2i7Ed3cgvUQwKFHWcbfWjasZcKSrfEk8mwOO6A==",
+  "success": true,
+  "projectFilePath": "D:\\FilmLibrary\\FilmLibrary.Model\\FilmLibrary.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.5\\microsoft.aspnetcore.cryptography.internal.5.0.5.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.5\\microsoft.aspnetcore.cryptography.keyderivation.5.0.5.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.5\\microsoft.extensions.identity.core.5.0.5.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.5\\microsoft.extensions.identity.stores.5.0.5.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
