@@ -26,8 +26,8 @@ namespace FilmLibrary.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -54,7 +54,7 @@ namespace FilmLibrary.DAL.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,7 @@ namespace FilmLibrary.DAL.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Rate = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Rate = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,8 +189,9 @@ namespace FilmLibrary.DAL.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Director = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RatingID = table.Column<int>(type: "int", nullable: true),
-                    GenreID = table.Column<int>(type: "int", nullable: true)
+                    RatingID = table.Column<int>(type: "int", nullable: false),
+                    GenreID = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -200,33 +201,13 @@ namespace FilmLibrary.DAL.Migrations
                         column: x => x.GenreID,
                         principalTable: "Genres",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Films_Ratings_RatingID",
                         column: x => x.RatingID,
                         principalTable: "Ratings",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Borrowings",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    userId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FilmID = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Borrowings", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Borrowings_Films_FilmID",
-                        column: x => x.FilmID,
-                        principalTable: "Films",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -236,9 +217,9 @@ namespace FilmLibrary.DAL.Migrations
                 {
                     { 1, "Action" },
                     { 2, "Comedy" },
-                    { 3, "Romantic" },
-                    { 4, "Adventure" },
-                    { 5, "Musical" }
+                    { 3, "Drama" },
+                    { 4, "Fantasy" },
+                    { 5, "Horror" }
                 });
 
             migrationBuilder.InsertData(
@@ -293,11 +274,6 @@ namespace FilmLibrary.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Borrowings_FilmID",
-                table: "Borrowings",
-                column: "FilmID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Films_GenreID",
                 table: "Films",
                 column: "GenreID");
@@ -326,16 +302,13 @@ namespace FilmLibrary.DAL.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Borrowings");
+                name: "Films");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Films");
 
             migrationBuilder.DropTable(
                 name: "Genres");

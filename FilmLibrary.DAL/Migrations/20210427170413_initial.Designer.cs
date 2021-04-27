@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmLibrary.DAL.Migrations
 {
     [DbContext(typeof(FilmLibraryDbContext))]
-    [Migration("20210426115651_initial")]
+    [Migration("20210427170413_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,7 @@ namespace FilmLibrary.DAL.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
@@ -70,6 +71,7 @@ namespace FilmLibrary.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -92,26 +94,6 @@ namespace FilmLibrary.DAL.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FilmLibrary.Model.Borrow", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("FilmID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("userId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("FilmID");
-
-                    b.ToTable("Borrowings");
-                });
-
             modelBuilder.Entity("FilmLibrary.Model.Film", b =>
                 {
                     b.Property<int>("ID")
@@ -123,18 +105,21 @@ namespace FilmLibrary.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GenreID")
+                    b.Property<int>("GenreID")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RatingID")
+                    b.Property<int>("RatingID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -153,6 +138,7 @@ namespace FilmLibrary.DAL.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -173,17 +159,17 @@ namespace FilmLibrary.DAL.Migrations
                         new
                         {
                             ID = 3,
-                            Type = "Romantic"
+                            Type = "Drama"
                         },
                         new
                         {
                             ID = 4,
-                            Type = "Adventure"
+                            Type = "Fantasy"
                         },
                         new
                         {
                             ID = 5,
-                            Type = "Musical"
+                            Type = "Horror"
                         });
                 });
 
@@ -195,6 +181,7 @@ namespace FilmLibrary.DAL.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Rate")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -364,24 +351,19 @@ namespace FilmLibrary.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("FilmLibrary.Model.Borrow", b =>
-                {
-                    b.HasOne("FilmLibrary.Model.Film", "Film")
-                        .WithMany()
-                        .HasForeignKey("FilmID");
-
-                    b.Navigation("Film");
-                });
-
             modelBuilder.Entity("FilmLibrary.Model.Film", b =>
                 {
                     b.HasOne("FilmLibrary.Model.Genre", "Genre")
                         .WithMany("Films")
-                        .HasForeignKey("GenreID");
+                        .HasForeignKey("GenreID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FilmLibrary.Model.Rating", "Rating")
                         .WithMany("Films")
-                        .HasForeignKey("RatingID");
+                        .HasForeignKey("RatingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Genre");
 

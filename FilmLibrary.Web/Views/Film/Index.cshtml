@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FilmLibrary.Model
+@inject SignInManager<AppUser> SignInManager
+@{
+    ViewData["Title"] = "Films";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Films</h1>
+</div>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <div>
+        <a asp-action="Create" class="btn btn-primary">Create</a>
+    </div>
+}
+
+<div style="margin-top: 20px; margin-bottom: 10px;">
+    <partial name="_IndexTable" />
+</div>

@@ -19,11 +19,12 @@ namespace FilmLibrary.Model
         [Required]
         public DateTime ReleaseDate { get; set; }
         [ForeignKey(nameof(Rating))]
-        public int? RatingID { get; set; }
+        public int RatingID { get; set; }
         public Rating Rating { get; set; }
         [ForeignKey(nameof(Genre))]
-        public int? GenreID { get; set; }
+        public int GenreID { get; set; }
         public Genre Genre { get; set; }
+        public string UserId { get; set; }
 
     }
 }

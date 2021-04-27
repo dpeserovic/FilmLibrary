@@ -16,7 +16,7 @@ namespace FilmLibrary.DAL
         public DbSet<Film> Films { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Borrow> Borrowings { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,9 +29,9 @@ namespace FilmLibrary.DAL
 
             modelBuilder.Entity<Genre>().HasData(new Genre { ID = 1, Type = "Action" });
             modelBuilder.Entity<Genre>().HasData(new Genre { ID = 2, Type = "Comedy" });
-            modelBuilder.Entity<Genre>().HasData(new Genre { ID = 3, Type = "Romantic" });
-            modelBuilder.Entity<Genre>().HasData(new Genre { ID = 4, Type = "Adventure" });
-            modelBuilder.Entity<Genre>().HasData(new Genre { ID = 5, Type = "Musical" });
+            modelBuilder.Entity<Genre>().HasData(new Genre { ID = 3, Type = "Drama" });
+            modelBuilder.Entity<Genre>().HasData(new Genre { ID = 4, Type = "Fantasy" });
+            modelBuilder.Entity<Genre>().HasData(new Genre { ID = 5, Type = "Horror" });
         }
     }
 }

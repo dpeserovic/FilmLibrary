@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FilmLibrary.Model
+@inject SignInManager<AppUser> SignInManager
+@model List<Film>
+
+<table style="margin-top: 20px;" class="table table-condensed" id="tbl-clients">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Details</th>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <th>Edit</th>
+                <th>Delete</th>
+            }
+            @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+            {
+                <th>Borrow</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var film in Model)
+        {
+        <tr>
+            <td>@film.Name</td>
+            <td>@film.Director</td>
+            <td>@film.Genre.Type</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@film.ID" class="btn btn-primary">Details</a>
+            </td>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@film.ID" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@film.ID">[delete]</a>
+                </td>
+            }
+            @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="" asp-route-id="@film.ID">[borrow]</a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
