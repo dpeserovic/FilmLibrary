@@ -32,8 +32,7 @@ namespace FilmLibrary.Web.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            //var films = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).AsQueryable().ToList();
-            var availableFilms = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).Where(f => f.UserId == null).ToList();
+            var availableFilms = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).Where(f => f.UserName == null).ToList();
             return View(availableFilms);
         }
 
@@ -88,6 +87,28 @@ namespace FilmLibrary.Web.Controllers
             this.FillDropdownRating();
             this.FillDropdownGenre();
             return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            var film = this._dbContext.Films.First(f => f.ID == id);
+            this._dbContext.Remove(film);
+            this._dbContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Borrow(int id)
+        {
+            var UserName = this._userManager.GetUserName(base.User);
+            var film = this._dbContext.Films.FirstOrDefault(f => f.ID == id);
+            film.UserName = UserName;
+            var canUpdate = await this.TryUpdateModelAsync(film);
+            if (canUpdate && this.ModelState.IsValid)
+            {
+                this._dbContext.SaveChanges();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

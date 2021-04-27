@@ -24,7 +24,7 @@ namespace FilmLibrary.Model
         [ForeignKey(nameof(Genre))]
         public int GenreID { get; set; }
         public Genre Genre { get; set; }
-        public string UserId { get; set; }
+        public string UserName { get; set; }
 
     }
 }

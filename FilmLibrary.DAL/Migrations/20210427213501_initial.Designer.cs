@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmLibrary.DAL.Migrations
 {
     [DbContext(typeof(FilmLibraryDbContext))]
-    [Migration("20210427170413_initial")]
+    [Migration("20210427213501_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,7 +118,7 @@ namespace FilmLibrary.DAL.Migrations
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

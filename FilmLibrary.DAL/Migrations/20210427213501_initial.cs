@@ -191,7 +191,7 @@ namespace FilmLibrary.DAL.Migrations
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RatingID = table.Column<int>(type: "int", nullable: false),
                     GenreID = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

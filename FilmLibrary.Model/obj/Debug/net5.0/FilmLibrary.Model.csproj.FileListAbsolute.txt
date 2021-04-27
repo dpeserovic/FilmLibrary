@@ -2,6 +2,7 @@ D:\FilmLibrary\FilmLibrary.Model\bin\Debug\net5.0\FilmLibrary.Model.deps.json
 D:\FilmLibrary\FilmLibrary.Model\bin\Debug\net5.0\FilmLibrary.Model.dll
 D:\FilmLibrary\FilmLibrary.Model\bin\Debug\net5.0\ref\FilmLibrary.Model.dll
 D:\FilmLibrary\FilmLibrary.Model\bin\Debug\net5.0\FilmLibrary.Model.pdb
+D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.csprojAssemblyReference.cache
 D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.GeneratedMSBuildEditorConfig.editorconfig
 D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.AssemblyInfoInputs.cache
 D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.AssemblyInfo.cs
@@ -9,4 +10,3 @@ D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.csproj.CoreC
 D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.dll
 D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\ref\FilmLibrary.Model.dll
 D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.pdb
-D:\FilmLibrary\FilmLibrary.Model\obj\Debug\net5.0\FilmLibrary.Model.csprojAssemblyReference.cache

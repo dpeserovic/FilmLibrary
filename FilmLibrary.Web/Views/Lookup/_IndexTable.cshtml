@@ -3,21 +3,25 @@
 @inject SignInManager<AppUser> SignInManager
 @model List<Film>
 
-<table style="margin-top: 20px;text-align: center;" class="table table-condensed" id="tbl-films">
+
+<table style="margin-top: 20px;text-align: center;" class="table table-condensed" id="tbl-lookups">
     <thead>
         <tr>
             <th>Name</th>
             <th>Director</th>
             <th>Genre</th>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <th>UserName</th>
+            }
             <th>Details</th>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Force return</th>
             }
-            @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+            else
             {
-                <th>Borrow</th>
+                <th>Return</th>
             }
         </tr>
     </thead>
@@ -28,22 +32,23 @@
             <td>@film.Name</td>
             <td>@film.Director</td>
             <td>@film.Genre.Type</td>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <td>@film.UserName</td>
+            }
             <td>
                 <a asp-action="Details" asp-route-id="@film.ID" class="btn btn-info">Details</a>
             </td>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
                 <td>
-                    <a asp-action="Edit" asp-route-id="@film.ID" class="btn btn-primary">Edit</a>
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@film.ID" class="btn btn-danger">Delete</a>
+                    <a asp-action="Return" asp-route-id="@film.ID" class="btn btn-danger">Force return</a>
                 </td>
             }
-            @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+            else
             {
                 <td>
-                    <a asp-action="Borrow" asp-route-id="@film.ID" class="btn btn-warning">Borrow</a>
+                    <a asp-action="Return" asp-route-id="@film.ID" class="btn btn-warning">Return</a>
                 </td>
             }
         </tr>
