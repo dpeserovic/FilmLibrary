@@ -32,8 +32,9 @@ namespace FilmLibrary.Web.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var films = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).AsQueryable().ToList();
-            return View(films);
+            //var films = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).AsQueryable().ToList();
+            var availableFilms = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).Where(f => f.UserId == null).ToList();
+            return View(availableFilms);
         }
 
         [Authorize(Roles = "Admin")]

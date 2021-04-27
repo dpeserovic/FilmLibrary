@@ -1,0 +1,15 @@
+﻿@model FilmLibrary.Model.Genre
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Edit</h1>
+</div>
+
+<div style="margin-top: 20px; margin-bottom: 10px;">
+    <form asp-action="Edit">
+        <inpuit type="hidden" asp-for="ID" />
+        <partial name="_CreateOrEdit" />
+    </form>
+</div>

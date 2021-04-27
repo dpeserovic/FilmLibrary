@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FilmLibrary.Model
+@inject SignInManager<AppUser> SignInManager
+@model List<Genre>
+
+<table style="margin-top: 20px;" class="table table-condensed" id="tbl-clients">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <th>Edit</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model)
+        {
+        <tr>
+            <td>@genre.ID</td>
+            <td>@genre.Type</td>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@genre.ID" class="btn btn-primary">Edit</a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

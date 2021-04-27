@@ -173,3 +173,8 @@ D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\FilmLibrary.Web.dll
 D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\ref\FilmLibrary.Web.dll
 D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\FilmLibrary.Web.pdb
 D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\FilmLibrary.Web.genruntimeconfig.cache
+D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\Razor\Views\Genre\Index.cshtml.g.cs
+D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\Razor\Views\Genre\Create.cshtml.g.cs
+D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\Razor\Views\Genre\_CreateOrEdit.cshtml.g.cs
+D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\Razor\Views\Genre\Edit.cshtml.g.cs
+D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\Razor\Views\Genre\_IndexTable.cshtml.g.cs
