@@ -189,9 +189,11 @@ namespace FilmLibrary.DAL.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Director = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Star = table.Column<int>(type: "int", nullable: false),
                     RatingID = table.Column<int>(type: "int", nullable: false),
                     GenreID = table.Column<int>(type: "int", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BorrowDate = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -208,30 +210,6 @@ namespace FilmLibrary.DAL.Migrations
                         principalTable: "Ratings",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Genres",
-                columns: new[] { "ID", "Type" },
-                values: new object[,]
-                {
-                    { 1, "Action" },
-                    { 2, "Comedy" },
-                    { 3, "Drama" },
-                    { 4, "Fantasy" },
-                    { 5, "Horror" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Ratings",
-                columns: new[] { "ID", "Rate" },
-                values: new object[,]
-                {
-                    { 1, "G - General Audiences" },
-                    { 2, "PG - Parental Guidance Suggested" },
-                    { 3, "PG-13 - Parents Strongly Cautioned" },
-                    { 4, "R - Restricted" },
-                    { 5, "NC-17 - Clearly Adult" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -36,6 +36,20 @@ namespace FilmLibrary.Web.Controllers
             return View(availableFilms);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult IndexAjax(FilmFilterModel filter)
+        {
+            var filmQuery = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).AsQueryable();
+            filter = filter ?? new FilmFilterModel();
+            if (!string.IsNullOrWhiteSpace(filter.Name))
+            {
+                filmQuery = filmQuery.Where(f => f.Name.ToLower().Contains(filter.Name.ToLower()));
+            }
+            var films = filmQuery.ToList();
+            return PartialView("_IndexTable", films);
+        }
+
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -46,9 +60,9 @@ namespace FilmLibrary.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult Create(Film model)
+        public IActionResult Create(Film film)
         {
-            this._dbContext.Films.Add(model);
+            this._dbContext.Films.Add(film);
             this._dbContext.SaveChanges();
             this.FillDropdownRating();
             this.FillDropdownGenre();
@@ -56,7 +70,8 @@ namespace FilmLibrary.Web.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Details(int? id = null)
+        [Route("film-details/{id:int?}")]
+        public IActionResult Details(int id)
         {
             var film = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).Where(f => f.ID == id).FirstOrDefault();
             return View(film);
@@ -66,10 +81,10 @@ namespace FilmLibrary.Web.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
-            var model = this._dbContext.Films.FirstOrDefault(f => f.ID == id);
+            var film = this._dbContext.Films.FirstOrDefault(f => f.ID == id);
             this.FillDropdownRating();
             this.FillDropdownGenre();
-            return View(model);
+            return View(film);
         }
 
         [HttpPost]
@@ -103,6 +118,7 @@ namespace FilmLibrary.Web.Controllers
             var UserName = this._userManager.GetUserName(base.User);
             var film = this._dbContext.Films.FirstOrDefault(f => f.ID == id);
             film.UserName = UserName;
+            film.BorrowDate = DateTime.Now.ToString();
             var canUpdate = await this.TryUpdateModelAsync(film);
             if (canUpdate && this.ModelState.IsValid)
             {

@@ -9,11 +9,12 @@
         <tr>
             <th>Name</th>
             <th>Director</th>
-            <th>Genre</th>
+            <th>Star</th>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
                 <th>UserName</th>
             }
+            <th>Borrow date</th>
             <th>Details</th>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
@@ -31,11 +32,17 @@
         <tr>
             <td>@film.Name</td>
             <td>@film.Director</td>
-            <td>@film.Genre.Type</td>
+            <td>
+                @for (int i = 1; i <= film.Star; i++)
+                {
+                    <span class="fa fa-star text-warning"></span>
+                }
+            </td>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
                 <td>@film.UserName</td>
             }
+            <td>@film.BorrowDate</td>
             <td>
                 <a asp-action="Details" asp-route-id="@film.ID" class="btn btn-info">Details</a>
             </td>

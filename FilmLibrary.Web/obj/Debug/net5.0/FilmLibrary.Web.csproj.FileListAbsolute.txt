@@ -11,6 +11,7 @@ D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\FilmLibrary.Web.pdb
 D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\FilmLibrary.Web.Views.dll
 D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\FilmLibrary.Web.Views.pdb
 D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\Humanizer.dll
+D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\FilmLibrary\FilmLibrary.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -181,3 +182,4 @@ D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\FilmLibrary.Web.dll
 D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\ref\FilmLibrary.Web.dll
 D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\FilmLibrary.Web.pdb
 D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\FilmLibrary.Web.genruntimeconfig.cache
+D:\FilmLibrary\FilmLibrary.Web\obj\Debug\net5.0\Razor\Views\Film\_FilmFilter.cshtml.g.cs

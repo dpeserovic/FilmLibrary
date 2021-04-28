@@ -22,17 +22,19 @@
             <dd>@Html.DisplayFor(model => model.Director)</dd>
             <dt>Release date</dt>
             <dd>@Html.DisplayFor(model => model.ReleaseDate)</dd>
+            <dt>Star</dt>
+            <dd>@Html.DisplayFor(model => model.Star)</dd>
             <dt>Rating</dt>
-            <dd>@Model?.Rating?.Rate</dd>
+            <dd>@Model.Rating.Rate</dd>
             <dt>Genre</dt>
-            <dd>@Model?.Genre?.Type</dd>
+            <dd>@Model.Genre.Type</dd>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
                 <div>
                     <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">Edit</a>
                 </div>
+                <br />
             }
-            <br />
             <div>
                 <a asp-action="Index" asp-route-id="" class="btn btn-secondary">Back</a>
             </div>

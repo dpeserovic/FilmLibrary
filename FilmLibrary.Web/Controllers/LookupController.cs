@@ -44,16 +44,17 @@ namespace FilmLibrary.Web.Controllers
                 return View(myFilms);
             }
         }
-        public IActionResult Details(int? id = null)
+        [Route("lookup-film-details/{id:int?}")]
+        public IActionResult Details(int id)
         {
             var film = this._dbContext.Films.Include(r => r.Rating).Include(g => g.Genre).Where(f => f.ID == id).FirstOrDefault();
             return View(film);
         }
-
         public async Task<IActionResult> Return(int id)
         {
             var film = this._dbContext.Films.FirstOrDefault(f => f.ID == id);
             film.UserName = null;
+            film.BorrowDate = null;
             var canUpdate = await this.TryUpdateModelAsync(film);
             if (canUpdate && this.ModelState.IsValid)
             {

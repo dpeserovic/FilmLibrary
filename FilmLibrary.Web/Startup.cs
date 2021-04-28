@@ -42,6 +42,12 @@ namespace FilmLibrary.Web
                 options.UseSqlServer(
                      Configuration.GetConnectionString("FilmLibraryDbContext"),
                  opt => opt.MigrationsAssembly("FilmLibrary.DAL")));
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +74,11 @@ namespace FilmLibrary.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                name: "film-list",
+                pattern: "film-list",
+                defaults: new { controller = "Film", action = "Index" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

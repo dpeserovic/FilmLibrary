@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmLibrary.DAL.Migrations
 {
     [DbContext(typeof(FilmLibraryDbContext))]
-    [Migration("20210427213501_initial")]
-    partial class initial
+    [Migration("20210428112738_seed")]
+    partial class seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,6 +101,9 @@ namespace FilmLibrary.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BorrowDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -117,6 +120,9 @@ namespace FilmLibrary.DAL.Migrations
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Star")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

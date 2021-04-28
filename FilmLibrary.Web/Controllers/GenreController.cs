@@ -55,17 +55,17 @@ namespace FilmLibrary.Web.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
-            var model = this._dbContext.Genres.FirstOrDefault(f => f.ID == id);
-            return View(model);
+            var genre = this._dbContext.Genres.FirstOrDefault(f => f.ID == id);
+            return View(genre);
         }
 
         [HttpPost]
         [ActionName(nameof(Edit))]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> EditGender(int id)
+        public async Task<IActionResult> EditGenre(int id)
         {
-            var gender = this._dbContext.Genres.FirstOrDefault(f => f.ID == id);
-            var canUpdate = await this.TryUpdateModelAsync(gender);
+            var genre = this._dbContext.Genres.FirstOrDefault(f => f.ID == id);
+            var canUpdate = await this.TryUpdateModelAsync(genre);
             if (canUpdate && this.ModelState.IsValid)
             {
                 this._dbContext.SaveChanges();

@@ -1,0 +1,14 @@
+﻿@using FilmLibrary.Web.Models
+
+@model FilmFilterModel
+
+<form action="@Url.Action("Index")" method="post" id="filter-form">
+    <div class="form-row">
+        <div class="col-3">
+            <input asp-for="Name" class="form-control" type="text" placeholder="Name" />
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary" id="submit-button">Search</button>
+        </div>
+    </div>
+</form>

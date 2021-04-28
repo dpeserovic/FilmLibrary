@@ -17,5 +17,29 @@
 }
 
 <div style="margin-top: 20px; margin-bottom: 10px;">
+    <partial name="_FilmFilter" model="new FilmFilterModel()" />
+</div>
+
+<div style="margin-top: 20px; margin-bottom: 10px;">
     <partial name="_IndexTable" />
 </div>
+
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+        $("#submit-button").click(performFilter);
+    });
+
+    function performFilter() {
+        $("#filter-form");
+        $.ajax({
+            url: "@Url.Action("IndexAjax")",
+            method: "POST",
+            data: $("#filter-form").serialize(),
+            success: function (html) {
+                $("#tbl-films").replaceWith(html);
+            }
+        });
+    }
+    </script>
+}

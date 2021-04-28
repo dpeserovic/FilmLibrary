@@ -8,7 +8,7 @@
         <tr>
             <th>Name</th>
             <th>Director</th>
-            <th>Genre</th>
+            <th>Star</th>
             <th>Details</th>
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
@@ -24,29 +24,34 @@
     <tbody>
         @foreach (var film in Model)
         {
-        <tr>
-            <td>@film.Name</td>
-            <td>@film.Director</td>
-            <td>@film.Genre.Type</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@film.ID" class="btn btn-info">Details</a>
-            </td>
-            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-            {
+            <tr>
+                <td>@film.Name</td>
+                <td>@film.Director</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@film.ID" class="btn btn-primary">Edit</a>
+                    @for(int i = 1; i <= film.Star; i++)
+                    {
+                        <span class="fa fa-star text-warning"></span>
+                    }
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@film.ID" class="btn btn-danger">Delete</a>
+                    <a asp-action="Details" asp-route-id="@film.ID" class="btn btn-info">Details</a>
                 </td>
-            }
-            @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
-            {
-                <td>
-                    <a asp-action="Borrow" asp-route-id="@film.ID" class="btn btn-warning">Borrow</a>
-                </td>
-            }
-        </tr>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@film.ID" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@film.ID" class="btn btn-danger">Delete</a>
+                    </td>
+                }
+                @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-action="Borrow" asp-route-id="@film.ID" class="btn btn-warning">Borrow</a>
+                    </td>
+                }
+            </tr>
         }
     </tbody>
 </table>

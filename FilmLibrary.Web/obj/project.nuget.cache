@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/j8PWCa5Bw4BTvuNc8xfLXMlaHDReoVMXRtYKAI94s1yLjQ9GfPZj7x8HxvjFLncwcOcZYfa2jQQhU52jpsEeA==",
+  "dgSpecHash": "+g0KkOqPBO5BLJfWcmuP99ZauHQ9YZ+mnNy5f8EIaMxZofgan5+afNS1NeriRkIS9Os04Yhfa40gWF3D6G2Tiw==",
   "success": true,
   "projectFilePath": "D:\\FilmLibrary\\FilmLibrary.Web\\FilmLibrary.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zalman\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\5.0.5\\microsoft.aspnetcore.authentication.facebook.5.0.5.nupkg.sha512",
     "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.5\\microsoft.aspnetcore.cryptography.internal.5.0.5.nupkg.sha512",
     "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.5\\microsoft.aspnetcore.cryptography.keyderivation.5.0.5.nupkg.sha512",
     "C:\\Users\\Zalman\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.5\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.5.nupkg.sha512",

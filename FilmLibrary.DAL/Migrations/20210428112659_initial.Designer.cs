@@ -4,14 +4,16 @@ using FilmLibrary.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FilmLibrary.DAL.Migrations
 {
     [DbContext(typeof(FilmLibraryDbContext))]
-    partial class FilmLibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210428112659_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,33 +150,6 @@ namespace FilmLibrary.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Genres");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Type = "Action"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Type = "Comedy"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Type = "Drama"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Type = "Fantasy"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Type = "Horror"
-                        });
                 });
 
             modelBuilder.Entity("FilmLibrary.Model.Rating", b =>
@@ -191,33 +166,6 @@ namespace FilmLibrary.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Ratings");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Rate = "G - General Audiences"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Rate = "PG - Parental Guidance Suggested"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Rate = "PG-13 - Parents Strongly Cautioned"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Rate = "R - Restricted"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Rate = "NC-17 - Clearly Adult"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
